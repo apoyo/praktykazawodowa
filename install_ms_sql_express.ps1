@@ -1,4 +1,4 @@
-
+#Skrypt pozwalający na automatyczne pobranie i instalację z wybranymi parametrami MS SQL Express
 
 #pobieranie pliku
 $url ='https://download.microsoft.com/download/7/c/1/7c14e92e-bdcb-4f89-b7cf-93543e7112d1/SQLEXPR_x64_ENU.exe'
