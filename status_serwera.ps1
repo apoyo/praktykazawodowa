@@ -1,6 +1,4 @@
-﻿#Skrypt zbierający informację o statusie danego serwera(jakie jest zużycie dysku,ramu,procesora) i zapisujący te dane w pliku json
-
-cd C:\inetpub\wwwroot\healthcheck
+﻿cd C:\inetpub\wwwroot\healthcheck
 
 
 
@@ -41,8 +39,8 @@ $cpu_total_other = Get-CimInstance win32_processor | Measure-Object -Property Lo
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
   
   $memory = Get-WmiObject -Class Win32_OperatingSystem | Select-Object -Property @{Name = "MemoryUsage(%)"; Expression = { [math]::Round(($_.TotalVisibleMemorySize - $_.FreePhysicalMemory) / $_.TotalVisibleMemorySize * 100, 2) } }
-     #Tutaj podajemy jakie procesy chcemy obserwować
-     $processes = (Get-Process -Name "powershell","notepad++","chrome" )
+     
+     $processes = (Get-Process -Name "IpcService","IpcStatusService","Intelix.ApplicationPack.IxMetaService","IpcReservationService")
     
     $processesData = foreach ($process in $processes) {
         
@@ -177,8 +175,8 @@ $cpu_total_other = Get-CimInstance win32_processor | Measure-Object -Property Lo
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
   
   $memory = Get-WmiObject -Class Win32_OperatingSystem | Select-Object -Property @{Name = "MemoryUsage(%)"; Expression = { [math]::Round(($_.TotalVisibleMemorySize - $_.FreePhysicalMemory) / $_.TotalVisibleMemorySize * 100, 2) } }
-       #Tutaj podajemy jakie procesy chcemy obserwować
-     $processes = (Get-Process -Name "powershell","notepad++","chrome" )
+     
+     $processes = (Get-Process -Name "IpcService","IpcStatusService","Intelix.ApplicationPack.IxMetaService","IpcReservationService")
     
     $processesData = foreach ($process in $processes) {
 
